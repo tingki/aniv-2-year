@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Background</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 1));
+            overflow: hidden;
+        }
+
+        .galaxy-background {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+            opacity: 0.8;
+            animation: twinkle 1.5s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+
+        /* Stars with random positions */
+        .star:nth-child(1) { top: 10%; left: 15%; width: 3px; height: 3px; animation-duration: 1.2s; }
+        .star:nth-child(2) { top: 20%; left: 25%; width: 2px; height: 2px; animation-duration: 1.5s; }
+        .star:nth-child(3) { top: 30%; left: 35%; width: 4px; height: 4px; animation-duration: 1.8s; }
+        .star:nth-child(4) { top: 40%; left: 45%; width: 1.5px; height: 1.5px; animation-duration: 1.3s; }
+        .star:nth-child(5) { top: 50%; left: 55%; width: 3px; height: 3px; animation-duration: 1.6s; }
+        .star:nth-child(6) { top: 60%; left: 65%; width: 2px; height: 2px; animation-duration: 1.9s; }
+        .star:nth-child(7) { top: 70%; left: 75%; width: 4px; height: 4px; animation-duration: 1.4s; }
+        .star:nth-child(8) { top: 80%; left: 85%; width: 1px; height: 1px; animation-duration: 1.7s; }
+        .star:nth-child(9) { top: 90%; left: 15%; width: 3px; height: 3px; animation-duration: 1.5s; }
+        .star:nth-child(10) { top: 20%; left: 85%; width: 2.5px; height: 2.5px; animation-duration: 1.1s; }
+
+        /* Slide animation */
+        .slide {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: white;
+            top: 100%; /* Start off the screen */
+            transition: top 0.5s ease;
+            z-index: 9999;
+        }
+
+        .slide.active {
+            top: 0; /* Slide down into view */
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid galaxy-background">
+        <div class="row justify-content-center align-items-center" style="height: 100%;">
+            <div class="col-md-6 text-center text-white">
+                <h1>Just Two Of Us</h1>
+                <p>in entire the universe!</p>
+                <button id="exploreButton" class="btn btn-light">Explore</button>
+            </div>
+        </div>
+
+        <!-- Stars -->
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+
+    <div id="slide" class="slide"></div>
+
+    <script>
+        document.getElementById('exploreButton').onclick = function() {
+            var slide = document.getElementById('slide');
+            slide.classList.add('active');
+            setTimeout(function() {
+                window.location.href = 'explore.html'; // Change to the explore page
+            }, 500); // Wait for the animation to finish
+        };
+    </script>
+</body>
+</html>
